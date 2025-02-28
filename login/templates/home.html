@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    {% load static %}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .main-container {
+        width: 400px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .logout-btn {
+        background: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .logout-btn:hover {
+        background: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <h2>Successfully Logged In</h2>
+      <p>Welcome to the home page!</p>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+    <script>
+      document.getElementById("logoutBtn").addEventListener("click", function() {
+        localStorage.removeItem("rememberMe");
+        localStorage.removeItem("email");
+        // Redirect to the logout URL
+        window.location.href = "{% url 'logout_view' %}";
+      });
+    </script>
+  </body>
+</html>
